@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组排重</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var arrOne = [1, 2, 3, 4, 'd', 'd', 4];
+        var arrTwo = [1, 2, 6, 7,'d','d'];
+        // 去除数组中的虚值
+        var mixedArr = ['a','blue','',9,true,undefined,'white',false]
+        var trueArr = mixedArr.filter(Boolean);
+        console.log('trueArr: ', trueArr);
+        // 取交集
+        var allArr = [...new Set(arrOne)].filter(item=>arrTwo.includes(item))
+        console.log('allArr交集: ', allArr);
+        // 一、数组去重 耗时57
+        var arr1 = Array.from([...new Set(arrOne)])
+        console.log('arr1: ', arr1);
+        // 二、数组去重 耗时8427
+        function distinct(a, b) {
+            let arr = a.concat(b);
+            return arr.filter((item, index) => {
+                return arr.indexOf(item) === index
+            })
+        }
+        console.log('distinct(arrOne,arrTwo): ', distinct(arrOne, arrTwo));
+        // 三、数组去重 耗时8617
+
+        function distinctTwo(a, b) {
+            let arr = a.concat(b)
+            let result = []
+            for (let i of arr) {
+                !result.includes(i) && result.push(i)
+            }
+            return result
+        }
+        console.log('distinctTwo(arrOne,arrTwo): ', distinctTwo(arrOne, arrTwo));
+
+        // 四、数组去重 耗时120
+        function distinctThree(a, b) {
+            let arr = a.concat(b)
+            arr = arr.sort()
+            let result = [arr[0]]
+            for (let i = 1; i < arr.length; i++) {
+                arr[i] !== arr[i - 1] && result.push(arr[i])
+            }
+            return result
+        }
+        console.log('distinctThree(arrOne,arrTwo): ', distinctThree(arrOne, arrTwo));
+
+        // 五、数组去重 耗时16
+        function distinctFour(a, b) {
+            let arr = a.concat(b)
+            let result = []
+            let obj = {}
+            for (let i of arr) {
+                if (!obj[i]) {
+                    result.push(i)
+                    obj[i] = 1
+                }else{
+                    obj[i] +=1
+                }
+            }
+            return result
+        }
+        console.log('distinctFour(arrOne,arrTwo): ', distinctFour(arrOne, arrTwo));
+        //判断一句话，单词的重复出现次数
+        var string = 'baby now has a distinct personality of her own, and this portends an exciting time for you. baby is a girl but you are body. are you ok?';
+        // 去掉字符串中的所有标点符号
+        string = string.replace(/[\|\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g,""); 
+        var strArr = string.split(' ');
+        function distinctCount(arr){
+            let obj = {}
+            for (let i of arr) {
+                if (!obj[i]) {
+                    obj[i] = 1
+                }else{
+                    obj[i] +=1
+                }
+            }
+            return obj
+        }
+        console.log('distinctCount(strArr): ', distinctCount(strArr));
+        
+    </script>
+
+</body>
+
+</html>

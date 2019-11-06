@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深复制浅复制</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        let obj = {a: 1,b: 2,c: {name: 'drr'}};
+        var obj2 = {a:1,arr:[1,2,3]};
+        function deepClone(item) {
+            const target = item.constructor === Array ? [] : {}; // 判断复制的目标是数组还是对象
+            for (let keys in item) { // 遍历目标
+                if (item.hasOwnProperty(keys)) {
+                    if (item[keys] && typeof item[keys] === 'object') { // 如果值是对象，就递归一下
+                        target[keys] = item[keys].constructor === Array ? [] : {};
+                        target[keys] = deepClone(item[keys]);
+                    } else { // 如果不是，就直接赋值
+                        target[keys] = item[keys];
+                    }
+                }
+            }
+            return target;
+        }
+        let obj1 = deepClone(obj)
+        console.log('obj1: ', obj1);//{a: 1, b: 2, c: { name:'drr'}}
+        let obj3 = deepClone(obj2);
+        console.log('obj3: ', obj3);
+        obj3.arr[1] = 123;
+        console.log('obj3: ', obj3);
+        console.log('obj2: ', obj2);
+        // ------------------数组的复制--------------------
+        var arr = [1,2,3,4,5,[6,7]];
+        var arr1 = deepClone(arr);
+        console.log('arr1: ', arr1);
+        arr1[5].push(123)
+        console.log('arr1: ', arr1);
+        console.log('arr: ', arr);
+
+        // ------------------hasOwnProperty复制--------------------
+        var newArr = [1,2,3,4];
+        for (let keys in newArr){
+            if(newArr.hasOwnProperty(keys)){
+                console.log(keys)
+            }
+        }
+
+    </script>
+</body>
+
+</html>
