@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组嵌套对象的去重</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        let arr = [{
+            id:1,
+            name: 'aaa',
+            data: 20
+        }, {
+            id:2,
+            name: 'bbb',
+            data: 10
+        }, {
+            id:2,
+            name: 'bbb',
+            data: 10
+        }, {
+            id:1,
+            name: 'aaa',
+            data: 20
+        }, {
+            id:3,
+            name: 'ccc',
+            data: 2
+        }, {
+            id:4,
+            name: 'ddd',
+            data: 31
+        }, {
+            id:5,
+            name: 'eee',
+            data: 1
+        }, {
+            id:6,
+            name: 'fff',
+            data: 4
+        }, ];
+        const sort = (arr,key)=> {
+            let obj = {};
+            let newArr = [];
+            arr.forEach((val) => {
+                if (!obj[val[key]]) {
+                    obj[val[key]] = val;
+                    newArr.push(val);
+                };
+            });
+            // 最简单的使用sort去重
+            let sortArr = newArr.sort((a, b) => {
+                return a.data - b.data;
+            });
+            console.log(newArr);
+        };
+        sort(arr,'id'); //需要排重的数组，和按照那个key值进行排重
+    </script>
+</body>
+
+</html>
