@@ -291,7 +291,7 @@
 
         // Symbol类型是不可枚举的。
 
-        [1, 2, 3, 4] = [x, ...y]
+        // [1, 2, 3, 4] = [x, ...y]
         // x,y   [1，[2,3,4]]
 
 
@@ -299,17 +299,26 @@
             name: user.name,
             age: user.age
         });
-        const user = {
+        const userMan = {
             name: "Lydia",
             age: 21
         }
+        console.log('getUser(userMan): ', getUser(userMan));
         // 对于箭头函数，如果只返回一个值，我们不必编写花括号。但是，如果您想从一个箭头函数返回一个对象，您必须在圆括号之间编写它，否则不会返回任何值!
         // 使用 ||运算符，我们可以返回第一个真值。如果所有值都是假值，则返回最后一个值。
-        const one = (false || {} || null)	
-    const two = (null || false || "")	
-    const three = ([] || 0 || true)	
-    console.log(one, two, three)
+        const one = (false || {} || null)
+        const two = (null || false || "")
+        const three = ([] || 0 || true)
+        console.log(one, two, three);
 
+
+        var uname = 'jack'
+        function change() {
+            alert(uname) // ?
+            var uname = 'lily'
+            alert(uname) //?
+        }
+        change();//undefined lily
     </script>
 
 </body>
