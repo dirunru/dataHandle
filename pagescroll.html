@@ -80,9 +80,11 @@
         function animate(obj, sHeight, option) {
             // 当滚到最后一条公告的时候就不用动画了。
             var stopHeight = sHeight - obj.scrollHeight;
+            console.log('stopHeight: ', stopHeight);
             var marginTopNum = 0;
             var timer = setInterval(function () {
                 marginTopNum -= sHeight;
+                console.log('marginTopNum: ', marginTopNum);
                 obj.style.marginTop = marginTopNum + "px";
                 obj.style.transition = "margin-top 1.5s ease";
                 // 注意这里的比较符号，前面得到的高度都进行四舍五入了
