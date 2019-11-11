@@ -314,11 +314,19 @@
 
         var uname = 'jack'
         function change() {
-            alert(uname) // ?
-            var uname = 'lily'
-            alert(uname) //?
+            console.log(uname) // ?
+            var uname = 'lily'  //var uname uname=lily
+            console.log(uname) //?
         }
         change();//undefined lily
+
+        var myname = 'nick'
+        function changeName() {
+            console.log(myname) // ?
+            myname = 'sali'
+            console.log(myname) //?
+        }
+        changeName();//jack sali
     </script>
 
 </body>

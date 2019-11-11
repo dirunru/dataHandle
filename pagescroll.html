@@ -1,15 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>滚动距离</title>
+    <title>页面滚动</title>
+    <style type="text/css">
+        body,
+        div,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .notice {
+            width: 300px;
+            height: 30px;
+            border: 1px solid black;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        li {
+            padding: 3px;
+        }
+    </style>
 </head>
+
 <body>
+    <div id="notice" class="notice">
+        <ul id="noticeList">
+            <li>我是公告1</li>
+            <li>我是公告2</li>
+            <li>我是公告3</li>
+            <li>我是公告4</li>
+            <li>我是公告5</li>
+            <li>我是公告6</li>
+            <li>我是公告7</li>
+            <li>我是公告8</li>
+        </ul>
+    </div>
     <script type="text/javascript">
-     var scrollTop=document.documentElement.scrollTop||document.body.scrollTop
-     console.log('scrollTop: ', scrollTop);
+        window.onload = function () {
+            var notice = document.getElementById("notice");
+            var noticeList = document.getElementById("noticeList");
+
+            // 获取ul下第一个li元素，好计算li的高度，因为后面滚动的时候每次要滚动一个高度，这里li都是一样高的，
+            // 所以获取第一个的高度就行了，不然要遍历获取每一个li的高度。
+            var noticeFirstItem = noticeList.querySelector("li");
+
+            // 获取li的高度，这里获取的是offsetHeight，关于js各种高度的定义可以注意以下
+            var scrollHeight = noticeFirstItem.offsetHeight;
+            console.log('scrollHeight : ', scrollHeight );
+            // 是否可以进行动画
+            var opt = {
+                animated: true,
+                interval: 2000
+            };
+
+            notice.onclick = function () {
+                // 动画之前首先重置
+                // noticeFirstItem.style.transition = "";
+                noticeFirstItem.style.marginTop = 0;
+                if (opt.animated) {
+                    opt.animated = false;
+                    animate(noticeList, scrollHeight, opt);
+                }
+            };
+        };
+
+        // 动画函数，obj——要产生动画的对象，sHeight——每次要滚动的距离，interval——多久滚动一次
+        function animate(obj, sHeight, option) {
+            // 当滚到最后一条公告的时候就不用动画了。
+            var stopHeight = sHeight - obj.scrollHeight;
+            var marginTopNum = 0;
+            var timer = setInterval(function () {
+                marginTopNum -= sHeight;
+                obj.style.marginTop = marginTopNum + "px";
+                obj.style.transition = "margin-top 1.5s ease";
+                // 注意这里的比较符号，前面得到的高度都进行四舍五入了
+                if (marginTopNum < stopHeight) {
+                    // clearInterval(timer);
+                    // // option.animated = true;
+                    marginTopNum = 0;
+                    obj.style.marginTop = 0;
+                }
+            }, option.interval);
+        }
     </script>
 </body>
+
 </html>
