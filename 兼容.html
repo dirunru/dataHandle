@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面试兼容</title>
+    <style>
+        .newSpan {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>
+                <p>随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。</p>
+                <small>CSS里设置 *{margin:0;padding:0;} </small>
+            </li>
+            <li>
+                <p>块属性标签在float后，同时又有横行的margin，这样的话在IE6显示下margin比会设置的大些。</p>
+                <small>在float的标签样式控制中加入 display:inline;将其转化为行内属性即可。</small>
+            </li>
+            <li>
+                <p>设置较小高度标签（一般小于10px），在IE6，IE7中高度会超出自己设置高度 。</p>
+                <small>给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度</small>
+            </li>
+            <li>
+                <p>图片间是有默认的间距的。 几个img标签放在一起的时候，有些浏览器会有默认的间距，加了通配符也不起作用</p>
+                <small>使用float属性为img布局</small>
+            </li>
+            <li>
+                <p>标签最低高度设置min-height不兼容</p>
+                <small>
+                        {
+                            min-height：200px；
+                            height：auto！important；
+                            height：200px；                 
+                        }
+                </small>
+            </li>
+            <li>
+                <p>透明度的兼容CSS设置 </p>
+                <small>
+                    兼容IE8及以下的IE浏览器，
+                    {
+                        filter:alpha(opacity=50);   
+                        -moz-opacity:0.5;                  
+                        -khtml-opacity: 0.5;   
+                        opacity: 0.5;                   
+                    }
+                </small>
+            </li>
+            <li>
+                <p>表单元素行高不一致</p>
+                <small>给表单元素添加float：left（左浮动）；或者是vertical-align：middle；（垂直对齐方式：居中）</small>
+            </li>
+            <li>
+                <p>当在a标签中嵌套img标签时，在某些浏览器中img会有蓝色边框；</p>
+                <small>给img添加border：0；或者是border：none；</small>
+            </li>
+            <li>
+                <p>百分比的bug  父元素宽度为100%，子元素宽度各为50%，在IE6下各个元素宽度之和超过100%</p>
+                <small>给右边浮动的子元素添加clear：right；</small>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var el = document.getElementsByTagName('li');
+        (function () {
+            for (let i = 0; i < el.length - 1; i++) {
+                var span = document.createElement("span");
+                //设置 div 属性，如 id
+                span.setAttribute("class", "newSpan");
+                span.innerHTML = i + 1;
+                el[i].appendChild(span);
+            }
+        })()
+    </script>
+</body>
+
+</html>

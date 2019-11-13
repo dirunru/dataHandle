@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>清除浮动</title>
+    <style>
+        #div1 {
+            width: 350px;
+            height: 70px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <p> <strong>方法：</strong>父级div手动定义height，就解决了父级div无法自动获取到高度的问题。</p>
+            <p> <strong>原理：</strong>简单、代码少、容易掌握 </p>
+            <p> <strong>缺点：</strong>只适合高度固定的布局，要给出精确的高度，如果高度和父级div不一样时，会产生问题 </p>
+        </li>
+        <li>
+            <p> <strong>方法：</strong>父级div定义 overflow:hidden </p>
+            <p> <strong>原理：</strong>必须定义width或zoom:1，同时不能定义height，使用overflow:hidden时，浏览器会自动检查浮动区域的高度 </p>
+            <p> <strong>缺点：</strong>简单、代码少、浏览器支持好 </p>
+        </li>
+        <li>
+            <p> <strong>方法：</strong>结尾处加空div标签 clear:both </p>
+            <p> <strong>原理：</strong>添加一个空div，利用css提高的clear:both清除浮动，让父级div能自动获取到高度 </p>
+            <p> <strong>缺点：</strong>简单、代码少、浏览器支持好 </p>
+        </li>
+    </ul>
+    <h1>拖拽会用到那些事件</h1>
+    <p>draggable="true" 设置元素为可拖放</p>
+    <p>ondragstart 属性调用了一个函数，drag(event)，它规定了被拖动的数据。</p>
+    <p>dataTransfer.setData() 方法设置被拖数据的数据类型和值：</p>
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <p id="drag1" draggable="true" ondragstart="drag(event)">这是一段可移动的段落。请把该段落拖入上面的矩形。</p>
+    </div>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    <script type="text/javascript">
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+        // 拖转的方法
+        function drag(ev) {
+            ev.dataTransfer.setData("Text", ev.target.id); //设置拖拽的数据
+        }
+        // 降落
+        function drop(ev) {
+            var data = ev.dataTransfer.getData("Text"); //获取拖转的数据
+            ev.target.appendChild(document.getElementById(data)); //投放数据
+            ev.preventDefault();
+        }
+    </script>
+</body>
+
+</html>

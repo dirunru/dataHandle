@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣杯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            height: 50px;
+            background: #cccccc;
+        }
+
+        #container {
+            padding-left: 200px;
+            padding-right: 200px;
+        }
+
+        #container .column {
+            float: left;
+            text-align: center;
+            height: calc(100vh - 100px);
+        }
+
+        #center {
+            width: 100%;
+            display: flex;
+            border:solid 4px #000000;
+            box-sizing: border-box;
+        }
+
+        #left {
+            width: 200px;
+            margin-left: -100%;
+            position: relative;
+            right: 200px;
+            background: #dddddd;
+        }
+
+        #right {
+            width: 200px;
+            margin-right: -200px;
+            background: #dddddd;
+        }
+
+        #footer {
+            clear: both;
+            height: 50px;
+            background: #000000;
+            text-align: center;
+            color: #ffffff;
+            line-height: 50px;
+        }
+
+        .box1 {
+            background: red;
+            flex: 0 0 200px;
+        }
+
+        .box2 {
+            flex: 1;
+        }
+        .box3 {
+            background: red;
+            flex: 0 0 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>圣杯布局和双飞翼布局：<small>两侧宽度固定，中间宽度自适应的三栏布局</small></h1> -->
+    <div id="header"></div>
+    <div id="container">
+        <div id="center" class="column">
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="box3"></div>
+        </div>
+        <div id="left" class="column">2</div>
+        <div id="right" class="column">3</div>
+    </div>
+    <div id="footer">圣杯布局</div>
+</body>
+
+</html>
