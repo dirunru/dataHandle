@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- content的参数：width可视区域的宽度,device-width -->
+    <!-- intial-scale:页面首次被显示是可视区域的缩放级别 1.0按照实际情况显示 -->
+    <!-- minimum-scale=0.5：表示最小的缩放比例 -->
+    <!-- maximum-scale=2.0：表示最大的缩放比例 -->
+    <!-- user-scalable:是否可对页面进行缩放，no 禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cookies和Storage的区别</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>
+                <p>
+                    <strong>储存大小</strong>
+                </p>
+                <ul>
+                    <li>cookies的数据大小不超过4k</li>
+                    <li>localStorage和sessionStorage苦役达到5M</li>
+                </ul>
+            </li>
+            <li>
+                <p>
+                    <strong>有效时间</strong>
+                </p>
+                <ul>
+                    <li>localStorage，持久储存数据，关闭浏览器也不会丢失，除非自己删除</li>
+                    <li>sessionStorage,关闭浏览器后数据删除</li>
+                    <li>
+                        cookies一般是服务器生成，在设置的过期时间前一直有效
+                    </br>
+                        <small>
+                            （1）.如果设置过期时间，那么cookie将存储在本地硬盘，过期会自动删除。
+                        </br>
+                            （2）.如果不设置过期时间，那么cookie存在于计算机内存中，当会话结束或者关闭浏览器窗口，将删除cookie
+                        </small>
+                    </li>
+
+                </ul>
+            </li>
+            <li>
+                <p>
+                    <strong>区别</strong>
+                    <ul>
+                        <li>cookies每次都会自动储存在http头中，如果cookies保存过多的数据会影响性能的</li>
+                        <li>localStorage:持久化的本地储存，永久储存，不能跨域，数据共享</li>
+                        <li>sessionStorage:临时性储存，绘画级别的储存，数据不共享，若是通过a标签跳转的页面则是sessionStorage共享</li>
+                    </ul>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>
