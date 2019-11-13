@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面试</title>
+</head>
+
+<body>
+    <div>
+        <p>
+            <strong>Xhtml 和Html的区别：</strong>
+            它比HTML严谨性会高点，然后基本语言都还是沿用的HTML的标签，只不过废除了部分表现层的标签，同事在标准上要求高了点比如标签的严格嵌套，标签结束等等！
+        </p>
+        <p>
+            <strong>js延迟加载</strong>
+            <ul>
+                <li>在script元素中设置 defer 属性，等于告诉浏览器立即下载，但延迟执行。</li>
+                <li>在script中添加async：不让页面等待脚本下载和执行，从而异步加载页面其他内容。</li>
+                <li>动态创建DOM方式</li>
+                <li>使用jQuery的getScript()方法</li>
+                <li>使用setTimeout延迟方法</li>
+                <li>让JS最后加载 把js外部引入的文件放到页面底部</li>
+            </ul>
+        </p>
+        <p>
+            <strong>普通函数和箭头函数的区别</strong>
+            <ul>
+                <li>指向的是定义它的对象，而不是使用时所在的对象；普通函数指向的是它的直接调用者。</li>
+                <li>不可以当做构造函数</li>
+                <li>不可以使用agruments对象，该对象在函数体内不存在</li>
+            </ul>
+
+        </p>
+        <p>
+            <strong>做的项目一般兼容哪些浏览器</strong>
+            谷歌，火狐，ie，safair,360,百度
+        </p>
+        <p>
+            <strong>闭包</strong>
+            <ul>
+                <li>概念：用一种特殊方法，让函数内部的变量，可以被外部访问</li>
+                <li>场景：如何保证函数内部变量不被释放 1、子作用域中还在使用这个变量</li>
+                <li>特点：1、能访问母函数内的变量，其他函数无法访问母函数内变量。2、闭包函数的母函数执行后，母函数的上下文不销毁，会被存到js内存中</li>
+            </ul>
+        </p>
+        <p>
+            <strong>性能优化：页面加载时间跟页面运行效率</strong>
+            <ul>
+                <li>使用精灵图（雪碧图）</li>
+                <li>减少http请求</li>
+                <li>路由懒加载，图片懒加载</li>
+                <li>文件压缩，按需加载，应用缓存机制</li>
+            </ul>
+        </p>
+        <p>
+            <strong>node.js</strong>
+            用js来写后台（服务器语言）
+        </p>
+
+    </div>
+    <script type="text/javascript">
+        // call() , bind() , apply() ，改变this指向
+        let obj = {
+            a: 1,
+            b: () => {
+                console.log(this.a); // undefined
+            },
+            c: function () {
+                console.log(this.a); // 1 
+            },
+        };
+        obj.b();
+        obj.c();
+    </script>
+</body>
+
+</html>

@@ -35,11 +35,11 @@
             <li>
                 <p>标签最低高度设置min-height不兼容</p>
                 <small>
-                        {
-                            min-height：200px；
-                            height：auto！important；
-                            height：200px；                 
-                        }
+                    {
+                    min-height：200px；
+                    height：auto！important；
+                    height：200px；
+                    }
                 </small>
             </li>
             <li>
@@ -47,10 +47,10 @@
                 <small>
                     兼容IE8及以下的IE浏览器，
                     {
-                        filter:alpha(opacity=50);   
-                        -moz-opacity:0.5;                  
-                        -khtml-opacity: 0.5;   
-                        opacity: 0.5;                   
+                    filter:alpha(opacity=50);
+                    -moz-opacity:0.5;
+                    -khtml-opacity: 0.5;
+                    opacity: 0.5;
                     }
                 </small>
             </li>
@@ -63,8 +63,16 @@
                 <small>给img添加border：0；或者是border：none；</small>
             </li>
             <li>
-                <p>百分比的bug  父元素宽度为100%，子元素宽度各为50%，在IE6下各个元素宽度之和超过100%</p>
+                <p>百分比的bug 父元素宽度为100%，子元素宽度各为50%，在IE6下各个元素宽度之和超过100%</p>
                 <small>给右边浮动的子元素添加clear：right；</small>
+            </li>
+            <li>
+                <p>时间格式兼容问题 ios只识别"2017/01/01"这样的日期格式</p>
+                <small>
+                    var timeStr = '2018-06-21';
+                    var timeStamp = Date.parse(timeStr.replace(/-/g, '/'))/1000;
+                    console.log("timeStamp:" + timeStamp);
+                </small>
             </li>
         </ul>
     </div>
