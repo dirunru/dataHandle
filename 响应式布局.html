@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- content的参数：width可视区域的宽度,device-width -->
+    <!-- intial-scale:页面首次被显示是可视区域的缩放级别 1.0按照实际情况显示 -->
+    <!-- user-scalable:是否可对页面进行缩放，no 禁止缩放 -->
+    <meta name="viewport"
+        content="width=device-width,  initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>响应式布局</title>
+    <style>
+        html,
+        body {
+            font-size: 1rem;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        h2 small {
+            font-weight: normal;
+        }
+
+        .box {
+            width: 10rem;
+            height: 10rem;
+            border: solid 1px red;
+        }
+
+        /** iPad **/
+        /* @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+        } */
+
+        /** iPhone **/
+        /* @media only screen and (min-width: 320px) and (max-width: 767px) {
+            
+        } */
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>响应式布局:<small>响应式网页设计就是一个网站能够兼容多个终端</small></h2>
+        <ul>
+            <li>
+                <p>
+                    一、布局及设置meta标签
+                </p>
+                <small>
+                    <ul>
+                        <li>width=device-width ：表示宽度是设备屏幕的宽度</li>
+                        <li>initial-scale=1.0：表示初始的缩放比例</li>
+                        <li>minimum-scale=0.5：表示最小的缩放比例</li>
+                        <li>maximum-scale=2.0：表示最大的缩放比例</li>
+                        <li>user-scalable=yes：表示用户是否可以调整缩放比例</li>
+                    </ul>
+                </small>
+            </li>
+            <li>
+                <p>
+                    二、通过媒体查询来设置样式media query
+                </p>
+            </li>
+            <li>
+                <p>
+                    三、rem是指相对于根元素的字体大小的单位，em是指相对于父元素的字体大小的单位。
+                </p>
+            </li>
+            <li>
+                <p>
+                    四、flex布局：主流的布局方式，不仅适用于移动Web，网页上也表现良好，这也是现在工作中用的最多的布局方式，因此我们的项目尽量采用flex+rem的方式进行布局和完成移动端的适配
+                </p>
+            </li>
+            <li>
+                <p>
+                    五、bootstrap的栅格化布局
+                </p>
+            </li>
+        </ul>
+        <div class="box">
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        // 如果拿到的是一个320px的设计稿，font-size：10px;1rem=10px;
+        // 屏幕自适应
+        var oHtml = document.documentElement || document.body;
+        getSize();
+        //监听浏览器屏幕大小改变
+        window.onresize = function () {
+            getSize();
+        };
+
+        function getSize() {
+            var screenWidth = oHtml.clientWidth;
+            if (screenWidth <= 320) {
+                oHtml.style.fontSize = 10 + 'px';
+            } else if (screenWidth >= 640) {
+                oHtml.style.fontSize = 20 + 'px';
+            } else {
+                oHtml.style.fontSize = screenWidth / 640 * 20 + 'px';
+            }
+        }
+    </script>
+</body>
+
+</html>
