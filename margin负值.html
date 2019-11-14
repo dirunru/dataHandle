@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- content的参数：width可视区域的宽度,device-width -->
+    <!-- intial-scale:页面首次被显示是可视区域的缩放级别 1.0按照实际情况显示 -->
+    <!-- minimum-scale=0.5：表示最小的缩放比例 -->
+    <!-- maximum-scale=2.0：表示最大的缩放比例 -->
+    <!-- user-scalable:是否可对页面进行缩放，no 禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>margin负值</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .div1 {
+            background-color: red;
+            margin-right: -100px;
+            /* 当元素不存在width或者width:auto的时候，负margin会增加元素的宽度。 */
+        }
+
+        .parent {
+            width: 300px;
+            background-color: yellow;
+        }
+
+        .div4,
+        .div2,
+        .div3 {
+            width: 100px;
+            height: 100px;
+        }
+
+        .div4 {
+            background-color: red;
+        }
+
+        .div2 {
+            background-color: yellow;
+            margin-top: -20px;
+        }
+
+        .div3 {
+            background-color: green;
+            margin-top: -50px;
+            /* 
+                当我们给一个元素设置负边距时，比如margin-top:20px，
+                会使这个元素向上偏移20px的距离，不同于相对定位保存原来的物理空间，
+                他会放弃偏移之前占据的空间，这样他后面的文档流就会流过来填充这部分空间。 
+                但是会减少自身供css读取的高度
+             */
+        }
+
+        /* 
+            负的margin会改变浮动元素的显示位置，即使元素写在dom的后面，我也能让它显示在最前面。
+            其实，圣杯布局，双飞翼布局都是利用这个原理实现的。
+         */
+        .div5,
+        .div6,
+        .div7 {
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+
+        .div5 {
+            background-color: rgba(255, 0, 0, 0.6);
+        }
+
+        .div6 {
+            background-color: rgba(255, 255, 0, 0.6);
+            margin-left: -20px;
+        }
+
+        .div7 {
+            background-color: rgba(0, 128, 0, 0.6);
+            margin-left: -20px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="parent">
+        <div class="div1">111</div>
+    </div>
+
+
+    <div class="div2">222</div>
+    <div class="div3">333</div>
+    <div class="div4">444</div>
+
+
+
+<div class="div5">555</div>
+<div class="div6">666</div>
+<div class="div7">777</div>
+
+
+
+
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>

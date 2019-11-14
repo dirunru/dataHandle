@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- content的参数：width可视区域的宽度,device-width -->
+    <!-- intial-scale:页面首次被显示是可视区域的缩放级别 1.0按照实际情况显示 -->
+    <!-- minimum-scale=0.5：表示最小的缩放比例 -->
+    <!-- maximum-scale=2.0：表示最大的缩放比例 -->
+    <!-- user-scalable:是否可对页面进行缩放，no 禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蚂蚁金服</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="text"> </div>
+    <p class="hhh"></p>
+    <ul class="example">
+        <li class="child">Coffee</li>
+        <li class="child">Tea</li>
+    </ul>
+    <div class="parent">
+        <div class="children"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    var string = 'abcdaaabcd';
+    var arr = string.split("");
+    stringOk = Array.from([...new Set(arr)]).join('');
+    var ele = document.getElementsByClassName('text')[0];
+    ele.innerHTML = ' 排重后的字符串' + stringOk;
+
+    function sortString(data) {
+        let obj = {}
+        for (let i of data) {
+            if (!obj[i]) {
+                obj[i] = 1
+            } else {
+                obj[i] += 1
+            }
+        }
+        return obj
+    }
+    var max = null;
+    var dataCount = sortString(arr);
+    var sortData = Object.values(dataCount).sort((a, b) => b - a);
+    var key = null;
+    for (let item in dataCount) {
+        if (dataCount[item] == sortData[0]) {
+            key = item
+        }
+    }
+    document.getElementsByClassName('hhh')[0].innerHTML = "重复率最大" + key + "次数" + sortData[key]
+    // var list = document.getElementsByClassName("example")[0];
+    // list.getElementsByClassName("child")[0].innerHTML = "Milk";
+    // var _parent = document.getElementsByClassName('parent')[0];
+    // _parent.getElementsByClassName('children')[0].innerHTML = 'hhhhhhh';
+    // console.log(document.getElementsByClassName('children')[0]);
+
+    // 第二题：
+
+    var url = 'https://www.baidu.com?name=张三&age=21'
+
+    function getParams(url) {
+        var obj = {};
+        var paramsString = url.split("?")[1];//截取字符串？后面
+        var str = paramsString.split('&'); 
+        for (var i = 0; i < str.length; i++) {
+            obj[str[i].split("=")[0]] = str[i].split("=")[1]
+        }
+        return obj
+    }
+    console.log(getParams(url))
+    document.getElementsByClassName('example')[0].getElementsByClassName('child')[0].innerHTML = JSON.stringify(getParams(url))
+
+    // 数组套对象，键值对象中的键值对的数量排序
+    var arr1= [
+        {a: 1, b: 2},
+        {a: 1, b: 2, c: 3, d: 5},
+        {a: 1},
+        {a: 1, b: 2, c: 3, d: 4}
+    ];
+    arr1.map(item=>{
+        function aa (obj){
+            var count = 0;
+            for(var i in obj){
+                count ++;
+            } 
+            return count
+        }
+        item.length = aa(item);
+    })
+    var sortArr = arr1.sort((a, b) => {
+        return a.length - b.length;
+    });
+    sortArr.map(item=>{
+        delete item.length
+    })
+    console.log(sortArr)
+    // 实现Array.property.map
+    function mapWay(data, fn) {
+        var arg = [];
+        for (var i = 0; i < data.length; i++) {
+            (function (ele, fn) {
+            //每一个元素处理后放入新数组
+                arg.push(fn(ele));
+            })(data[i], fn);
+        }
+        return arg;
+    }
+    var data = [10, 20, 30, 40];
+    var roots= mapWay(data, function (ele) {
+        return ele / 10;
+    });
+    console.log(roots);//[1,2,3,4]
+
+    // 
+</script>
+
+</html>
