@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- content的参数：width可视区域的宽度,device-width -->
+    <!-- intial-scale:页面首次被显示是可视区域的缩放级别 1.0按照实际情况显示 -->
+    <!-- minimum-scale=0.5：表示最小的缩放比例 -->
+    <!-- maximum-scale=2.0：表示最大的缩放比例 -->
+    <!-- user-scalable:是否可对页面进行缩放，no 禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>less和sass的区别</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <strong>相同</strong>
+            <p>1、混入(Mixins)——class中的class；</p>
+            <p>2、参数混入——可以传递参数的class，就像函数一样；</p>
+            <p>3、嵌套规则——Class中嵌套class，从而减少重复的代码；</p>
+            <p>4、运算——CSS中用上数学；</p>
+            <p>5、颜色功能——可以编辑颜色；</p>
+            <p>6、名字空间(namespace)——分组样式，从而可以被调用；</p>
+            <p>7、作用域——局部修改样式；</p>
+            <p>8、JavaScript 赋值——在CSS中使用JavaScript表达式赋值。</p>
+        </li>
+        <li>
+            <p>
+                <strong>安装：</strong>
+                <ul>
+                    <li>sass的安装需要安装Ruby环境</li>
+                    <li>less，属于js，需要less.js来处理代码输出css到浏览器，也可以在开发环境使用less，然后编译成css文件，直接放到项目中</li>
+                </ul>
+            </p>
+        </li>
+        <li>
+            <p>
+                sass使用和功能复杂，less的使用和功能简单
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>处理机制：</strong>
+                <ul>
+                    <li>
+                        sass通过服务器处理
+                    </li>
+                    <li>
+                        通过客户端处理，解析会比sass慢一点
+                    </li>
+                </ul>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>变量：</strong>sass使用$,less通过@
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>文件后缀：sass或scss  less</strong>
+            </p>
+        </li>
+    </ul>
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>

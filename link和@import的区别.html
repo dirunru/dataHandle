@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- content的参数：width可视区域的宽度,device-width -->
+    <!-- intial-scale:页面首次被显示是可视区域的缩放级别 1.0按照实际情况显示 -->
+    <!-- minimum-scale=0.5：表示最小的缩放比例 -->
+    <!-- maximum-scale=2.0：表示最大的缩放比例 -->
+    <!-- user-scalable:是否可对页面进行缩放，no 禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>link和@import的区别</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>外部引入css有两种方式:link标签和@import</p>
+        <p>建议使用link，慎用@import</p>
+        <ul>
+            <li>
+                1、从属关系：@import是css提供的语法规则，只有导入样式的作用，link是html提供的标签，不仅可以加载css文件，还可以定义RSS、rel链接属性。
+            </li>
+            <li>
+                2、加载顺序：link标签引入的 CSS 被同时加载；@import引入的 CSS 将在页面加载完毕后被加载。
+            </li>
+            <li>
+                3、兼容性区别:link属于html标签没有兼容性问题，@import属于css2.1才有的语法，支持IE5+
+            </li>
+            <li>
+                4、可以通过 JS 操作 DOM ，插入link标签来改变样式；由于 DOM 方法是基于文档的，无法使用@import的方式插入样式。
+            </li>
+            <li>
+                5、link引入的样式权重大于@import引入的样式。
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>
