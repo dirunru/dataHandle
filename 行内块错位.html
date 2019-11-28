@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- content的参数：width可视区域的宽度,device-width -->
+    <!-- intial-scale:页面首次被显示是可视区域的缩放级别 1.0按照实际情况显示 -->
+    <!-- minimum-scale=0.5：表示最小的缩放比例 -->
+    <!-- maximum-scale=2.0：表示最大的缩放比例 -->
+    <!-- user-scalable:是否可对页面进行缩放，no 禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>行内块错位</title>
+    <style>
+        .child1 {
+            display: inline-block;
+            border: solid 1px red;
+            width: 40%;
+            height: 200px;
+        }
+
+        .child2 {
+            display: inline-block;
+            border: solid 1px red;
+            width: 40%;
+            height: 200px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="child1">
+       <h3>ddd</h3>
+    </div>
+    <div class="child2">
+       <p>111</p>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>
