@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    .ul1 {
+        width: 50%;
+    }
+
+    .li1 {
+        float: left;
+        width: 100%;
+        position: relative;
+    }
+
+    .hidden {
+        height: 50px;
+        overflow: hidden;
+    }
+
+    .ul2 {
+        width: calc(100% - 100px);
+    }
+
+    .li2 {
+        float: left;
+        padding: 5px 10px;
+    }
+
+    .btn {
+        position: absolute;
+        right: 20px;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <ul class="ul1">
+            <template v-for="todo in todos">
+                <li :ref="`${todo.nameen}`" class="li1" :class="[`li-${todo.nameen}`]" :key="todo.id">
+                    {{todo.namech}} :{{todo.formatid}}
+                    <div class="ul2" v-for="lscmItem in todo.lscm">
+                        <span class="li2">{{lscmItem.namech}}</span>
+                    </div>
+                    <button class="btn" @click="showMore(todo)">更多</button>
+                </li>
+            </template>
+
+        </ul>
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            todos: [{
+                    "comment": "",
+                    "lscm": [{
+                            "count": "1268",
+                            "id": 1,
+                            "namech": "OGC WMTS",
+                            "nameen": "WMTS",
+                            "state": 1,
+                            "timestamp": 1439193813000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "26",
+                            "id": 2,
+                            "namech": "OGC WMS",
+                            "nameen": "WMS",
+                            "state": 1,
+                            "timestamp": 1439193815000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "46",
+                            "id": 3,
+                            "namech": "OGC WFS",
+                            "nameen": "WFS",
+                            "state": 1,
+                            "timestamp": 1439193816000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "2",
+                            "id": 4,
+                            "namech": "OGC WCS",
+                            "nameen": "WCS",
+                            "state": 1,
+                            "timestamp": 1439193817000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "38",
+                            "id": 5,
+                            "namech": "OGC WFS-G",
+                            "nameen": "WFS-G",
+                            "state": 1,
+                            "timestamp": 1439193837000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "19",
+                            "id": 6,
+                            "namech": "地名搜索服务",
+                            "nameen": "DMSSFW",
+                            "state": 1,
+                            "timestamp": 1433728837000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "0",
+                            "id": 7,
+                            "namech": "ESRI*.shp",
+                            "nameen": "shp",
+                            "state": 1,
+                            "timestamp": 1433728829000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "0",
+                            "id": 8,
+                            "namech": "KML",
+                            "nameen": "KML",
+                            "state": 1,
+                            "timestamp": 1433728822000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "0",
+                            "id": 9,
+                            "namech": "CSV",
+                            "nameen": "CSV",
+                            "state": 1,
+                            "timestamp": 1433728818000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "14",
+                            "id": 10,
+                            "namech": "OGC WPS",
+                            "nameen": "WPS",
+                            "state": 1,
+                            "timestamp": 1439194818000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "5",
+                            "id": 11,
+                            "namech": "路径规划服务",
+                            "nameen": "LJGHFW",
+                            "state": 1,
+                            "timestamp": 1433728809000,
+                            "typeid": 1
+                        },
+                        {
+                            "count": "0",
+                            "id": 59,
+                            "namech": "其他",
+                            "nameen": "QT",
+                            "state": 1,
+                            "timestamp": 1433728776000,
+                            "typeid": 1
+                        }
+                    ],
+                    "mark": 1,
+                    "namech": "服务类型",
+                    "nameen": "formatid",
+                    "state": 0,
+                    "timestamp": 1430899276000
+                },
+                {
+                    "lscm": [{
+                            "count": "1393",
+                            "id": 12,
+                            "namech": "基础地理框架数据",
+                            "nameen": "JCDLKJSJ",
+                            "state": 1,
+                            "timestamp": 1430984656000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "1",
+                            "id": 13,
+                            "namech": "机关单位",
+                            "nameen": "JGDW",
+                            "state": 1,
+                            "timestamp": 1431331139000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "0",
+                            "id": 14,
+                            "namech": "人口",
+                            "nameen": "RK",
+                            "state": 1,
+                            "timestamp": 1430984658000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "0",
+                            "id": 15,
+                            "namech": "气象",
+                            "nameen": "QX",
+                            "state": 1,
+                            "timestamp": 1430984659000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "1",
+                            "id": 16,
+                            "namech": "旅游",
+                            "nameen": "LY",
+                            "state": 1,
+                            "timestamp": 1430984659000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "1",
+                            "id": 17,
+                            "namech": "国民经济核算",
+                            "nameen": "GMJJHS",
+                            "state": 1,
+                            "timestamp": 1430984660000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "1",
+                            "id": 18,
+                            "namech": "就业和工资",
+                            "nameen": "JYHGZ",
+                            "state": 1,
+                            "timestamp": 1430984661000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "0",
+                            "id": 19,
+                            "namech": "价格指数",
+                            "nameen": "JGZS",
+                            "state": 1,
+                            "timestamp": 1430984662000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "3",
+                            "id": 20,
+                            "namech": "人民生活",
+                            "nameen": "RMSH",
+                            "state": 1,
+                            "timestamp": 1430984663000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "0",
+                            "id": 21,
+                            "namech": "财政",
+                            "nameen": "CZ",
+                            "state": 1,
+                            "timestamp": 1430984663000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "0",
+                            "id": 22,
+                            "namech": "资源和环境",
+                            "nameen": "ZYHHJ",
+                            "state": 1,
+                            "timestamp": 1430984664000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "1",
+                            "id": 23,
+                            "namech": "能源",
+                            "nameen": "NY",
+                            "state": 1,
+                            "timestamp": 1430984665000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "1",
+                            "id": 24,
+                            "namech": "农业",
+                            "nameen": "NY",
+                            "state": 1,
+                            "timestamp": 1430984667000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "1",
+                            "id": 25,
+                            "namech": "工业",
+                            "nameen": "GY",
+                            "state": 1,
+                            "timestamp": 1430984668000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "1",
+                            "id": 26,
+                            "namech": "运输和邮电",
+                            "nameen": "YSHYD",
+                            "state": 1,
+                            "timestamp": 1430984669000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "1",
+                            "id": 27,
+                            "namech": "批发和零售",
+                            "nameen": "PFHLS",
+                            "state": 1,
+                            "timestamp": 1430984669000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "11",
+                            "id": 28,
+                            "namech": "Web服务API",
+                            "nameen": "WebAPI",
+                            "state": 1,
+                            "timestamp": 1431574777000,
+                            "typeid": 2
+                        },
+                        {
+                            "count": "0",
+                            "id": 58,
+                            "namech": "其他",
+                            "nameen": "QT",
+                            "state": 1,
+                            "timestamp": 1431574748000,
+                            "typeid": 2
+                        }
+                    ],
+                    "mark": 1,
+                    "namech": "主题分类",
+                    "nameen": "servertypeid",
+                    "state": 1,
+                    "timestamp": 1433822849000
+                },
+                {
+                    "lscm": [{
+                            "count": "122",
+                            "id": 29,
+                            "namech": "全球",
+                            "nameen": "QQ",
+                            "state": 1,
+                            "timestamp": 1430984671000,
+                            "typeid": 3
+                        },
+                        {
+                            "count": "13",
+                            "id": 30,
+                            "namech": "国家",
+                            "nameen": "GJ",
+                            "state": 1,
+                            "timestamp": 1430984672000,
+                            "typeid": 3
+                        },
+                        {
+                            "count": "171",
+                            "id": 31,
+                            "namech": "省",
+                            "nameen": "S",
+                            "state": 1,
+                            "timestamp": 1434334496000,
+                            "typeid": 3
+                        },
+                        {
+                            "count": "1101",
+                            "id": 32,
+                            "namech": "市县",
+                            "nameen": "SX",
+                            "state": 1,
+                            "timestamp": 1430984674000,
+                            "typeid": 3
+                        },
+                        {
+                            "count": "0",
+                            "id": 33,
+                            "namech": "其他",
+                            "nameen": "QT",
+                            "state": 1,
+                            "timestamp": 1430984675000,
+                            "typeid": 3
+                        }
+                    ],
+                    "mark": 1,
+                    "namech": "覆盖区域",
+                    "nameen": "districtid",
+                    "state": 1,
+                    "timestamp": 1433822848000
+                },
+                {
+                    "lscm": [{
+                            "count": "1413",
+                            "id": 34,
+                            "namech": "CGCS2000",
+                            "nameen": "CGCS2000",
+                            "state": 1,
+                            "timestamp": 1430984676000,
+                            "typeid": 4
+                        },
+                        {
+                            "count": "16",
+                            "id": 35,
+                            "namech": "WGS84",
+                            "nameen": "WGS84",
+                            "state": 1,
+                            "timestamp": 1430984695000,
+                            "typeid": 4
+                        },
+                        {
+                            "count": "0",
+                            "id": 36,
+                            "namech": "其他",
+                            "nameen": "QT",
+                            "state": 1,
+                            "timestamp": 1430984677000,
+                            "typeid": 4
+                        }
+                    ],
+                    "mark": 1,
+                    "namech": "坐标系",
+                    "nameen": "coordinatesystemid",
+                    "state": 1,
+                    "timestamp": 1433822847000
+                },
+                {
+                    "lscm": [{
+                            "count": "1396",
+                            "id": 37,
+                            "namech": "经纬度",
+                            "nameen": "JWD",
+                            "state": 1,
+                            "timestamp": 1430984678000,
+                            "typeid": 5
+                        },
+                        {
+                            "count": "33",
+                            "id": 38,
+                            "namech": "Web墨卡托",
+                            "nameen": "MKT",
+                            "state": 1,
+                            "timestamp": 1430984678000,
+                            "typeid": 5
+                        },
+                        {
+                            "count": "0",
+                            "id": 39,
+                            "namech": "其他",
+                            "nameen": "QT",
+                            "state": 1,
+                            "timestamp": 1430984679000,
+                            "typeid": 5
+                        }
+                    ],
+                    "mark": 1,
+                    "namech": "投影类型",
+                    "nameen": "projectionid",
+                    "state": 1,
+                    "timestamp": 1433822846000
+                },
+                {
+                    "lscm": [{
+                            "count": "1399",
+                            "id": 42,
+                            "namech": "公开",
+                            "nameen": "GK",
+                            "state": 1,
+                            "timestamp": 1430984680000,
+                            "typeid": 7
+                        },
+                        {
+                            "count": "30",
+                            "id": 43,
+                            "namech": "授权",
+                            "nameen": "SQ",
+                            "state": 1,
+                            "timestamp": 1430984683000,
+                            "typeid": 7
+                        }
+                    ],
+                    "mark": 1,
+                    "namech": "使用权限",
+                    "nameen": "limitsid",
+                    "state": 1,
+                    "timestamp": 1433822843000
+                },
+                {
+                    "lscm": [{
+                            "count": "1062",
+                            "id": 44,
+                            "namech": "大于一年",
+                            "nameen": "DYYN",
+                            "state": 1,
+                            "timestamp": 1430984684000,
+                            "typeid": 8
+                        },
+                        {
+                            "count": "337",
+                            "id": 45,
+                            "namech": "一年",
+                            "nameen": "TN",
+                            "state": 1,
+                            "timestamp": 1430984683000,
+                            "typeid": 8
+                        },
+                        {
+                            "count": "20",
+                            "id": 47,
+                            "namech": "实时",
+                            "nameen": "SS",
+                            "state": 1,
+                            "timestamp": 1430984681000,
+                            "typeid": 8
+                        },
+                        {
+                            "count": "7",
+                            "id": 48,
+                            "namech": "其他",
+                            "nameen": "QT",
+                            "state": 1,
+                            "timestamp": 1431336067000,
+                            "typeid": 8
+                        }
+                    ],
+                    "mark": 1,
+                    "namech": "更新周期",
+                    "nameen": "upcycle",
+                    "state": 1,
+                    "timestamp": 1430881256000
+                }
+            ],
+            flag: true
+        },
+        methods: {
+            showMore(item) {
+                let gv = item.nameen
+                console.log(this.$refs[gv][0]);
+                let element = document.getElementsByClassName(`li-${item.nameen}`)[0]
+                element.classList.toggle('hidden');
+                console.log('offsetHeight:', element.offsetHeight, 'clientHeight:', element.clientHeight);
+            }
+        }
+    })
+</script>
+
+</html>
