@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改对象的key值名称</title>
+</head>
+
+<body>
+    <script>
+        var data1 = [{
+            appName: '应用1',
+            capacity: 233456,
+            age: 12,
+        }, {
+            appName: '应用2',
+            capacity: 124535,
+            age: 15
+        }]
+
+        function convertKey(arr, keyObj) {
+            let newArr = [];
+            let keysObjArr = Object.keys(keyObj)
+            arr.forEach((item, index) => {
+                let newObj = {};
+                for (var i = 0; i < keysObjArr.length; i++) {
+                    newObj[keysObjArr[i]] = item[keyObj[keysObjArr[i]]]
+                    delete item[keyObj[keysObjArr[i]]]
+                }
+                newArr.push({
+                    ...newObj,
+                    ...item
+                });
+            })
+            return newArr;
+        }
+
+        var data3 = convertKey(data1, {
+            appName: 'name',
+            capacity: 'key'
+        });
+        console.log(data3)
+    </script>
+</body>
+
+</html>
