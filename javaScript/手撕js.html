@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手撕js</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function fun01() {
+            const arr = [1, [2, [3, [4, 5]]], 6];
+            console.log('01.数组扁平化处理');
+            console.log('方法一、flat：flat存在兼容性问题', arr.flat(Infinity));
+            console.log('方法二、正则：正则处理（会将num类型变成字符串类型）：', JSON.stringify(arr).replace(/\[|\]/g, '').split(','))
+            console.log('方法二、正则处理优化：', JSON.parse('[' + JSON.stringify(arr).replace(/\[|\]/g, '') + ']'))
+            const flatten = arr => {
+                return arr.reduce((pre, cur) => {
+                    return pre.concat(Array.isArray(cur) ? flatten(cur) : cur);
+                }, [])
+            }
+            console.log('方法三、reduce：reduce方法处理：', flatten(arr));
+            const res5 = [];
+            const fn = arr => {
+                for (let i = 0; i < arr.length; i++) {
+                    if (Array.isArray(arr[i])) {
+                        fn(arr[i]);
+                    } else {
+                        res5.push(arr[i]);
+                    }
+                }
+            }
+            fn(arr);
+            console.log('方法四、函数递归：递归方法处理', res5);
+        }
+
+        function fun02() {
+            console.log('02.数组去重');
+            const arr = [1, 1, '1', 17, true, true, false, false, 'true', 'a', {}, {}];
+            console.log('方法一、set方法：', Array.from(new Set(arr)))
+        }
+
+        fun01() //数组扁平化处理
+        fun02() //数组去重
+    </script>
+</body>
+
+</html>
