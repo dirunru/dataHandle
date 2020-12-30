@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue3.0构建项目</title>
+</head>
+
+<body>
+    <div class="divname">1111
+        <span>hhhh</span>
+    </div>
+    <script type="text/javascript">
+        console.dir(document.getElementsByClassName('divname'))
+
+        function show(a, b) {
+            return a + b
+        }
+        console.dir(show)
+
+        let user = [{
+            id: 1,
+            name: 'hhh1',
+            time: '19-01-1'
+        }, {
+            id: 2,
+            name: 'hhh3',
+            time: '19-02-2'
+        }]
+        console.table(user, ['id', 'time'])
+    </script>
+</body>
+
+</html>
