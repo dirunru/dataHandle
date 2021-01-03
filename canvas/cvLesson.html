@@ -9,8 +9,28 @@
   </style>
 </head>
 <body>
-  <script type="text/javascript">
-
+  <canvas id="demo" width="600" height="600"></canvas>
+  <script>
+    // 第一步：拿到canvas的标签 
+    var canvas = document.getElementById('demo');
+    canvas.style.border ="1px solid red";
+    canvas.width = 600;  
+    canvas.height = 600;
+    // 第二步： 拿到canvas的上下文
+    var ctx = canvas.getContext('2d');
+    // 第三步：绘制
+    ctx.moveTo(100,100); //把画笔移动到100，100
+    ctx.lineTo(200,100); //从画笔的位置画一条直线到200，100
+    ctx.lineTo(100,200); // 从当前位置，画一条直线到100，200
+    ctx.closePath(); //闭合路径
+    // 设置线宽
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'red' // 描边前设置颜色，宽度
+    ctx.stroke(); //stroke描边的意思，填充线。不然看不到颜色，strokeStyle参数可以是颜色：rgb rgba #。。 或者名字
+    // 填充的样式
+    ctx.fillStyle='green'
+    // 进行填充
+    ctx.fill()
   </script>
 </body>
 </html>
