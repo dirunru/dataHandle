@@ -26,11 +26,19 @@
     // 设置线宽
     ctx.lineWidth = 3;
     ctx.strokeStyle = 'red' // 描边前设置颜色，宽度
-    ctx.stroke(); //stroke描边的意思，填充线。不然看不到颜色，strokeStyle参数可以是颜色：rgb rgba #。。 或者名字
     // 填充的样式
     ctx.fillStyle='green'
     // 进行填充
     ctx.fill()
+    ctx.stroke(); //stroke描边的意思，填充线。不然看不到颜色，strokeStyle参数可以是颜色：rgb rgba #。。 或者名字
+    var imageURL = canvas.toDataURL('image/png');//将canvas 转化成png图片
+    var img = document.createElement('img'); //生成 img标签
+    img.src = imageURL; //赋值图片的src路径
+    /* 另外一种写法
+      var image = new Image();
+      image.src = canvas.toDataURL("image/png");
+     */
+    document.body.appendChild(img); //添加图片元素
   </script>
 </body>
 </html>
