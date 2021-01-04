@@ -10,4 +10,9 @@
     if(canvas.getContext){
       支持canvas
     }
+
+### canvas属性：
+    fillRect(x,y,长,宽):填充矩形 === rect() fill()的结合
+    strokeRect(x,y,长,宽):描边矩形 === rect() stroke()的结合
+    clearRect(x,y,长,宽):清除矩形，相当于从中抠出一个透明的矩形 === rect() clear()的结合
     
