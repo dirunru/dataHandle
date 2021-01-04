@@ -15,4 +15,4 @@
     fillRect(x,y,长,宽):填充矩形 === rect() fill()的结合
     strokeRect(x,y,长,宽):描边矩形 === rect() stroke()的结合
     clearRect(x,y,长,宽):清除矩形，相当于从中抠出一个透明的矩形 === rect() clear()的结合
-    
+    beginPath() 方法开始一条路径或重置当前的路径。
