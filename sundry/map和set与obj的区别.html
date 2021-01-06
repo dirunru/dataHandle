@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>map和set与obj的区别</title>
+</head>
+<body>
+  <script>
+    /**
+     * Map结构提供了“值—值”的对应，是一种更完善的Hash结构实现。
+     * 如果你需要“键值对”的数据结构，Map比Object更合适。它类似于对象，也是键值对的集合,
+     * 但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。
+     */ 
+    /** 
+     * Set 是ES6 新增的一种叫做集合的数据结构，类似于数组，但成员是唯一且无序的，没有重复的值。以 [value, value]的形式储存元素
+     * Map 是一种叫做字典的数据结构，是以 [key, value] 的形式储存，每个成员都是一个双元素的数组的数据结构组成的参数
+     * Map 的键实际上是跟内存地址绑定的，只要内存地址不一样，就视为两个键。
+     **/
+    function baseMap(){
+      let map = new Map();
+      let obj = {name:1};
+      map.set(true,'111');
+      map.set(obj,'111');
+      map.set(1,1);
+      map.set(1,1);
+      map.set(undefined,undefined);
+      map.set(null,null);
+      map.set(NaN,NaN);
+      map.set([1,2,3],1);
+      console.log('新建map', map, map.get(obj)); //111
+      map.set(obj,'222')
+      console.log(map.get(obj)); // '222'
+    }
+    baseMap()
+    // 实例属性和方法：size、set、get、has、delete、clear 
+    // 遍历方法：keys()、values()、entries()、forEach()
+    function arrAndMapDifference(){
+      let map = new Map();
+      let arr = new Array();
+      //增：
+      map.set('a',1);
+      arr.push({'a': 1});
+      //查：
+      map.has('a');
+      arr.find(item=>item.a);
+      //改：
+      map.set('a',2);
+      arr.forEach(item=>item.a?item.a=2:'');
+      //删：
+      map.delete('a');
+      arr.splice(arr.findIndex(item=>item.a),1);
+
+      console.log(map);
+      console.log(arr);
+    }
+    arrAndMapDifference()
+
+    // set map object 对比 优势与劣势
+
+    // set的方法
+    /**
+     * add(value)：新增，相当于 array里的push
+     * delete(value)：存在即删除集合中value
+     * has(value)：判断集合中是否存在 value
+     * clear()：清空集合
+     * Array.from 方法可以将 Set 结构转为数组
+     **/ 
+
+    //  遍历方法
+    /**
+     * keys()：返回一个包含集合中所有键的迭代器
+     * values()：返回一个包含集合中所有值的迭代器
+     * entries()：返回一个包含Set对象中所有元素的键值对迭代器
+     * forEach(callbackFn, thisArg)：用于对集合成员执行callbackFn操作，如果提供了 thisArg 参数，回调中的this会是这个参数，没有返回值
+     * 可以使用 map、filter 方法
+     */
+    function setMapObject(){
+      let item = {a: 1};
+      let set = new Set();
+      let map = new Map();
+      let obj = new Object();
+      //增
+      set.add(item);
+      map.set('a', 1);
+      obj['a'] = 1;
+      //查
+      set.has(item);// true
+      map.has('a');// true
+      'a' in obj;// true
+      //改
+      item.a = 2;
+      map.set('a', 2);
+      obj['a'] = 2;
+      //删
+      set.delete(item);
+      map.delete('a');
+      delete obj['a'];
+      console.log(set);
+      console.log(map);
+      console.log(obj);
+    }
+    setMapObject()
+    /**
+     * 1.Map 转 Array：Map 结构转为数组结构，比较快速的方法是使用扩展运算符（...）。
+     * const map = new Map([[1, 1], [2, 2], [3, 3]])
+     * console.log([...map])    // [[1, 1], [2, 2], [3, 3]]
+     * 2.Array 转 Map 
+     * const map = new Map([[1, 1], [2, 2], [3, 3]])
+     * console.log(map)    // Map {1 => 1, 2 => 2, 3 => 3}
+     * */ 
+  
+  </script>
+</body>
+</html>
