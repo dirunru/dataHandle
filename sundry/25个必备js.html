@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>25个必备js</title>
+</head>
+<body>
+  <script>
+    const isOfType = (()=>{
+      // 将null设置成了新创建对象的原型，自然就不会有原型链上的属性。
+      const type = Object.create(null);
+      // 检查null 
+      type.null = x => x === null
+      // 检查 undefined 
+      type.undefined = x => x === undefined;
+      // 检查null 和 检查 undefined 
+      type.nil = x => type.null(x) || type.undefined(x);
+      type.string = x => !type.nil(x) && (typeof x === 'string' || x instanceof String);
+      type.number = x => !type.nil(x) && ((!isNaN(x) && isFinite(x)&& typeof x === 'number') || x instanceof Number);
+      type.boolean = x => !type.nil(x) && (typeof x === 'boolean' || x instanceof Boolean);
+      // check for array type
+      type.array = x => !type.nil(x) && Array.isArray(x);
+      // check for object or object literal type. e.g: {}, new Object(), Object.create(null)
+      type.object = x => ({}).toString.call(x) === '[object Object]';
+      // check for provided type instance
+      type.type = (x, X) => !type.nil(x) && x instanceof X;
+      // check for set type
+      type.set = x => type.type(x, Set);
+      // check for map type
+      type.map = x => type.type(x, Map);
+      // check for date type
+      type.date = x => type.type(x, Date);
+      return type
+    })()
+    console.log(isOfType.date(new Date()));
+
+
+    function isEmpty(x) {
+      if(Array.isArray(x) || typeof x === 'string' || x instanceof String) {
+        return x.length === 0;
+      }
+      if(x instanceof Map || x instanceof Set) {
+        return x.size === 0;
+      }
+      if(({}).toString.call(x) === '[object Object]') {
+        return Object.keys(x).length === 0;
+      }
+      return false;
+    }
+
+    console.log(isEmpty({}));
+    // 利用的slice(-1)取的是倒数第一个元素
+    function lastItem(list) {
+      if(Array.isArray(list)) {
+        return list.slice(-1)[0];
+      }
+      if(list instanceof Set) {
+        return Array.from(list).slice(-1)[0];
+      }
+      if(list instanceof Map) {
+        return Array.from(list.values()).slice(-1)[0];
+      }
+    }
+
+  </script>
+</body>
+</html>
