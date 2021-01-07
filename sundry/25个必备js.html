@@ -62,7 +62,132 @@
         return Array.from(list.values()).slice(-1)[0];
       }
     }
+    // 带有范围的随机数生成器
+    function randomNumber(max = 1, min = 0) {
+      if(min >= max) {
+        return max;
+      }
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+    // randomNumber(50,4)
+    // 当你有一个字符串变量，并想将其用作对象中的键以设置一个值时可以用它。
+    let property = 'newKey';
+    const man = {
+      someProperty:'some value',
+      [`${property}`]:'value'
+    }
+    console.log(man);
+    // 条件对象键
+    let condition = true;
+    const conditionMan = {
+      someProperty:'some value',
+      ...(condition === true ? {newProperty:'value'}:{})
+    }
+    console.log(conditionMan);
+    // 检查对象键
+    function checkObjKey(){
+      let obj = {
+        prop:'newProp'
+      }
+      console.log("检查",'prop' in obj); //true
+      console.log("检查1",obj.hasOwnProperty('prop')); //true
+    }
+    checkObjKey()
 
+    function forEachBreackContinue(arr){
+      for(const number of arr){
+        if(number % 2 === 0){
+          // 不往下走了，直接跳出循环
+          continue
+        }
+        if(number > 5){
+          // 直接结束循环
+          break;
+        }
+        console.log('break，continu',number)
+      }
+      arr.some(number=>{
+        // 被2整除的跳出循环，执行下一个
+        if(number % 2 === 0){
+          // 跳出去自己
+          return false
+        }
+        if(number > 5){
+          return true;
+        }
+        console.log(number)
+      })
+    }
+    forEachBreackContinue([1,2,3,4,5,6,7])
+
+    function destructuring(){
+      // 别名
+      function demo1({dt:data}){
+        console.log(data);
+      }
+      function demo2({dt:{name,id = 1}}){
+        console.log(name,id)
+      }
+      demo1({
+        dt:{name:'sample',id:50}
+      })
+      demo2({
+        dt:{name:"sample1"}
+      })
+    }
+    destructuring()
+    function canCheckLine(){
+      let obj = {
+        floor:{
+          container:{
+            value:'1111'
+          },
+          int:{
+            value:0,
+            key:1
+          }
+        }
+      }
+      console.log(obj?.floor?.int ? '链条成立':'链条不成立');
+      console.log(obj?.floor?.int?.key ? '链条成立':'链条不成立');
+    }
+    canCheckLine()
+    function  requiredFun(){
+      function required(argName = 'param') {
+        throw new Error(`"${argName}" is required`)
+      }
+      function iHaveRequiredOptions(arg1 = required('arg1'), arg2 = 10) {
+        console.log(arg1, arg2)
+      }
+      iHaveRequiredOptions(1, 24); // throws "arg1" is required
+      // iHaveRequiredOptions(); // throws "arg1" is required
+    }
+    requiredFun()
+    function deepClone(obj){
+      let clone = obj;
+      if (obj && typeof obj === "object") {
+        clone = new obj.constructor();
+
+        Object.getOwnPropertyNames(obj).forEach(
+          prop => (clone[prop] = deepClone(obj[prop]))
+        );
+      }
+      return clone;
+    };
+    let oldObj = {
+        floor:{
+          container:{
+            value:'1111'
+          },
+          int:{
+            value:0,
+            key:1
+          }
+        }
+      }
+    let newObj = deepClone(oldObj)
+    newObj?.floor?.container?.value ? newObj.floor.container.value = '22222':'11'
+    console.log(newObj,oldObj);
   </script>
 </body>
 </html>

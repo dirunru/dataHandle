@@ -14,6 +14,7 @@
      */ 
     /** 
      * Set 是ES6 新增的一种叫做集合的数据结构，类似于数组，但成员是唯一且无序的，没有重复的值。以 [value, value]的形式储存元素
+     * 该类数组对象的属性名必须为数值型或字符串型的数字
      * Map 是一种叫做字典的数据结构，是以 [key, value] 的形式储存，每个成员都是一个双元素的数组的数据结构组成的参数
      * Map 的键实际上是跟内存地址绑定的，只要内存地址不一样，就视为两个键。
      **/
@@ -99,6 +100,10 @@
       console.log(set);
       console.log(map);
       console.log(obj);
+      let arr = [1,2,3,4,5,6]
+      let setHandle = new Set(arr)
+      console.log(Array.from(setHandle, item => item * item)) // [ 13, 46, 98, 9798, 565, 135, 45643 ]
+
     }
     setMapObject()
     /** 
