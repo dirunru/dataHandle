@@ -24,9 +24,7 @@
 
 6.我想实现一段动画，我有哪些可选的实现方式？一段流畅的动画帧与帧之间间隔有什么要求？
          
-         1、html5动画：
-         2、js动画：
-         3、CSS3动画：
+         html5动画、js动画、CSS3动画、canvas动画、gif图片
          多数情况下最高的绘制频率只能是每秒60帧(frame per second)，对应于显示器的60Hz，低于这个频率，肉眼感觉画面卡顿不流畅，高于这个频率，及其耗费性能。因此通常采用的时间间隔就是1/60,也就是16.7ms。
          
 7、React中的setState什么时候是同步的什么时候是异步的？为什么原生方法和事件能实现同步？
@@ -35,4 +33,16 @@
         
 8、vue你用过nextTick吗？作用是什么？让你自己实现一个nextTick,说说你的思路？
         
-        nextTick用于在DOM更新完成之后执行回调函数
+        nextTick用于在DOM更新完成之后执行回调函数，在修改数据之后立即使用这个方法，获取更新后的 DOM。
+        Vue 实现响应式并不是数据发生变化之后 DOM 立即变化，而是按一定的策略进行 DOM 的更新。简单来说，Vue 在修改数据后，视图不会立刻更新，而是等同一事件循环中的所有数据变化完成之后，再统一进行视图更新。
+             
+```
+//改变数据
+vm.message = ‘changed’
+//想要立即使用更新后的DOM。这样不行，因为设置message后DOM还没有更新
+console.log(vm.$el.textContent) // 并不会得到’changed’
+//这样可以，nextTick里面的代码会在DOM更新后执行
+Vue.nextTick(function(){
+    console.log(vm.$el.textContent) //可以得到’changed’
+})
+```
