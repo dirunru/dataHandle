@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>25个必备js</title>
+</head>
+<body>
+  <script>
+    const isOfType = (()=>{
+      // 将null设置成了新创建对象的原型，自然就不会有原型链上的属性。
+      const type = Object.create(null);
+      // 检查null 
+      type.null = x => x === null
+      // 检查 undefined 
+      type.undefined = x => x === undefined;
+      // 检查null 和 检查 undefined 
+      type.nil = x => type.null(x) || type.undefined(x);
+      type.string = x => !type.nil(x) && (typeof x === 'string' || x instanceof String);
+      type.number = x => !type.nil(x) && ((!isNaN(x) && isFinite(x)&& typeof x === 'number') || x instanceof Number);
+      type.boolean = x => !type.nil(x) && (typeof x === 'boolean' || x instanceof Boolean);
+      // check for array type
+      type.array = x => !type.nil(x) && Array.isArray(x);
+      // check for object or object literal type. e.g: {}, new Object(), Object.create(null)
+      type.object = x => ({}).toString.call(x) === '[object Object]';
+      // check for provided type instance
+      type.type = (x, X) => !type.nil(x) && x instanceof X;
+      // check for set type
+      type.set = x => type.type(x, Set);
+      // check for map type
+      type.map = x => type.type(x, Map);
+      // check for date type
+      type.date = x => type.type(x, Date);
+      return type
+    })()
+    console.log(isOfType.date(new Date()));
+
+
+    function isEmpty(x) {
+      if(Array.isArray(x) || typeof x === 'string' || x instanceof String) {
+        return x.length === 0;
+      }
+      if(x instanceof Map || x instanceof Set) {
+        return x.size === 0;
+      }
+      if(({}).toString.call(x) === '[object Object]') {
+        return Object.keys(x).length === 0;
+      }
+      return false;
+    }
+
+    console.log(isEmpty({}));
+    // 利用的slice(-1)取的是倒数第一个元素
+    function lastItem(list) {
+      if(Array.isArray(list)) {
+        return list.slice(-1)[0];
+      }
+      if(list instanceof Set) {
+        return Array.from(list).slice(-1)[0];
+      }
+      if(list instanceof Map) {
+        return Array.from(list.values()).slice(-1)[0];
+      }
+    }
+    // 带有范围的随机数生成器
+    function randomNumber(max = 1, min = 0) {
+      if(min >= max) {
+        return max;
+      }
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+    // randomNumber(50,4)
+    // 当你有一个字符串变量，并想将其用作对象中的键以设置一个值时可以用它。
+    let property = 'newKey';
+    const man = {
+      someProperty:'some value',
+      [`${property}`]:'value'
+    }
+    console.log(man);
+    // 条件对象键
+    let condition = true;
+    const conditionMan = {
+      someProperty:'some value',
+      ...(condition === true ? {newProperty:'value'}:{})
+    }
+    console.log(conditionMan);
+    // 检查对象键
+    function checkObjKey(){
+      let obj = {
+        prop:'newProp'
+      }
+      console.log("检查",'prop' in obj); //true
+      console.log("检查1",obj.hasOwnProperty('prop')); //true
+    }
+    checkObjKey()
+
+    function forEachBreackContinue(arr){
+      for(const number of arr){
+        if(number % 2 === 0){
+          // 不往下走了，直接跳出循环
+          continue
+        }
+        if(number > 5){
+          // 直接结束循环
+          break;
+        }
+        console.log('break，continu',number)
+      }
+      arr.some(number=>{
+        // 被2整除的跳出循环，执行下一个
+        if(number % 2 === 0){
+          // 跳出去自己
+          return false
+        }
+        if(number > 5){
+          return true;
+        }
+        console.log(number)
+      })
+    }
+    forEachBreackContinue([1,2,3,4,5,6,7])
+
+    function destructuring(){
+      // 别名
+      function demo1({dt:data}){
+        console.log(data);
+      }
+      function demo2({dt:{name,id = 1}}){
+        console.log(name,id)
+      }
+      demo1({
+        dt:{name:'sample',id:50}
+      })
+      demo2({
+        dt:{name:"sample1"}
+      })
+    }
+    destructuring()
+    function canCheckLine(){
+      let obj = {
+        floor:{
+          container:{
+            value:'1111'
+          },
+          int:{
+            value:0,
+            key:1
+          }
+        }
+      }
+      console.log(obj?.floor?.int ? '链条成立':'链条不成立');
+      console.log(obj?.floor?.int?.key ? '链条成立':'链条不成立');
+    }
+    canCheckLine()
+    function  requiredFun(){
+      function required(argName = 'param') {
+        throw new Error(`"${argName}" is required`)
+      }
+      function iHaveRequiredOptions(arg1 = required('arg1'), arg2 = 10) {
+        console.log(arg1, arg2)
+      }
+      iHaveRequiredOptions(1, 24); // throws "arg1" is required
+      // iHaveRequiredOptions(); // throws "arg1" is required
+    }
+    requiredFun()
+    function deepClone(obj){
+      let clone = obj;
+      if (obj && typeof obj === "object") {
+        clone = new obj.constructor();
+
+        Object.getOwnPropertyNames(obj).forEach(
+          prop => (clone[prop] = deepClone(obj[prop]))
+        );
+      }
+      return clone;
+    };
+    let oldObj = {
+        floor:{
+          container:{
+            value:'1111'
+          },
+          int:{
+            value:0,
+            key:1
+          }
+        }
+      }
+    let newObj = deepClone(oldObj)
+    newObj?.floor?.container?.value ? newObj.floor.container.value = '22222':'11'
+    console.log(newObj,oldObj);
+  </script>
+</body>
+</html>

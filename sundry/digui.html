@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- content的参数：width可视区域的宽度,device-width -->
+    <!-- intial-scale:页面首次被显示是可视区域的缩放级别 1.0按照实际情况显示 -->
+    <!-- minimum-scale=0.5：表示最小的缩放比例 -->
+    <!-- maximum-scale=2.0：表示最大的缩放比例 -->
+    <!-- user-scalable:是否可对页面进行缩放，no 禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        let array = [{
+            id: 1,
+            name: '张三',
+        }, {
+            id: 2,
+            name: '李四',
+            children: [{
+                id: 22,
+                name: '李四的儿子',
+            }]
+        }]
+        var returnedItem; //定义一个不不赋值的变量
+        function find(arr, id) {
+            //利用foreach循环遍历
+            arr.forEach((item) => {
+                //判断递归结束条件
+                if (item.id == id) {
+                    returnedItem = item;
+                    return item;
+                    //判断chlidren是否有数据
+                } else if (item.children && item.children.length > 0) {
+                    //递归调用    
+                    find(item.children, id);
+                }
+            })
+        }
+        find(array, 22);
+        console.log(returnedItem)
+
+        function searchItem(arr, id) {
+            for (var i = 0; i < arr.length; i++) {
+                let item = arr[i]
+                if (item.id == id) {
+                    return item;
+                } else if (item.children) {
+                    let o = searchItem(item.children, id);
+                    if (o) {
+                        return o
+                    }
+                }
+            }
+        }
+        let obj = searchItem(array, 22)
+        console.log('-----63-----', obj)
+    </script>
+</body>
+
+</html>

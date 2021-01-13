@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas课程学习1</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <canvas id="demo"></canvas>
+  <canvas id="rect"></canvas>
+  <canvas id="arc"></canvas>
+  <canvas id="myCanvas"></canvas>
+  <canvas id="clock"></canvas>
+  <script>
+    function demo(){
+      // 第一步：拿到canvas的标签 
+      var canvas = document.getElementById('demo');
+      canvas.style.border ="1px solid red";
+      canvas.width = 300;  
+      canvas.height = 300;
+      // 第二步： 拿到canvas的上下文
+      var ctx = canvas.getContext('2d');
+      // 第三步：绘制
+      ctx.moveTo(100,100); //把画笔移动到100，100
+      ctx.lineTo(200,100); //从画笔的位置画一条直线到200，100
+      ctx.lineTo(100,200); // 从当前位置，画一条直线到100，200
+      ctx.closePath(); //闭合路径
+      // 设置线宽
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = 'red' // 描边前设置颜色，宽度
+      // 填充的样式
+      ctx.fillStyle='green'
+      // 进行填充
+      ctx.fill()
+      ctx.stroke(); //stroke描边的意思，填充线。不然看不到颜色，strokeStyle参数可以是颜色：rgb rgba #。。 或者名字
+      /* 另外一种写法
+        var image = new Image();
+        image.src = canvas.toDataURL("image/png");
+      */
+      /*
+      var imageURL = canvas.toDataURL('image/png');//将canvas 转化成png图片
+      var img = document.createElement('img'); //生成 img标签
+      img.src = imageURL; //赋值图片的src路径
+      document.body.appendChild(img); //添加图片元素
+     */
+      
+    }
+    demo(); 
+    function rect(){
+      var canvas = document.getElementById('rect');
+      canvas.style.border = "1px solid yellow";
+      canvas.width = 300;
+      canvas.height = 300;
+      var ctx = canvas.getContext('2d');
+      // 红色矩形
+      ctx.beginPath();
+      ctx.rect(100,100,100,100);
+      ctx.fillStyle = "red"
+      ctx.fill()
+      ctx.strokeStyle = "red"
+      ctx.stroke();
+      // 蓝色矩形
+      ctx.beginPath();
+      ctx.rect(150,150,100,100);
+      ctx.fillStyle = "blue"
+      ctx.fill()
+      ctx.strokeStyle = "red"
+      ctx.stroke();
+      // 透明矩形
+      ctx.beginPath();
+      ctx.clearRect(162.5,162.5,25,25);
+    }
+    rect()
+    function arc(){
+      var canvas = document.getElementById('arc');
+      canvas.style.border ="1px solid black";
+      canvas.width = 300;  
+      canvas.height = 300;
+      var ctx = canvas.getContext('2d');
+      // 黄色圆形
+      ctx.beginPath();
+      ctx.arc(100,100,100,0,2 * Math.PI);
+      ctx.fillStyle = 'yellow';
+      ctx.fill();
+      // 眼睛1
+      ctx.beginPath();
+      ctx.arc(60,90,10,0,2 * Math.PI);
+      ctx.fillStyle = 'black';
+      ctx.fill();
+      // 眼睛2
+      ctx.beginPath();
+      ctx.arc(140,90,10,0,2 * Math.PI);
+      ctx.fillStyle = 'black';
+      ctx.fill();
+      // 嘴巴
+      ctx.beginPath();
+      ctx.arc(100,120,50,0,1 * Math.PI);
+      ctx.fillStyle = 'red';
+      ctx.fill();
+    }
+    arc()
+    function linearGradient(){
+      var canvas = document.getElementById("myCanvas");
+      canvas.style.border ="1px solid red";
+      canvas.width = 300;  
+      canvas.height = 300;
+      var ctx = canvas.getContext("2d");
+      var grd = ctx.createLinearGradient(0,0,170,0);
+      grd.addColorStop(0,"black");
+      grd.addColorStop(1,"white");
+      ctx.fillStyle = grd;
+      ctx.fillRect(20,20,150,100);
+      // --- lineCap ---
+      ctx.beginPath();
+      ctx.lineWidth = 10;
+      ctx.lineCap="round"; // 平直边缘
+      ctx.moveTo(20,140);
+      ctx.lineTo(200,140);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.lineWidth = 10;
+      ctx.lineCap="butt"; // 圆形线帽
+      ctx.moveTo(20,170);
+      ctx.lineTo(200,170);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.lineWidth = 10;
+      ctx.lineCap="square"; // 正方型线帽
+      ctx.moveTo(20,210);
+      ctx.lineTo(200,210);
+      ctx.stroke();
+    }
+    linearGradient()
+    function clock(){
+      var canvas = document.getElementById('clock');
+      canvas.style.border ="1px solid red";
+      canvas.width = 300;  
+      canvas.height = 300;
+      var ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.arc(100,100,100,0,2*Math.PI,false);
+      ctx.stroke();
+      ctx.moveTo(100,100);
+      ctx.beginPath();
+      ctx.arc(100,100,94,0,2*Math.PI,false);
+      ctx.stroke();
+      ctx.moveTo(100,100);
+      ctx.lineTo(100,30);
+      ctx.stroke();
+      ctx.moveTo(100,100);
+      ctx.lineTo(40,100);
+      ctx.stroke();
+      ctx.font="bold 14px Arial";
+      ctx.textAlign = "center"
+      ctx.textBaseline='middle';
+      ctx.fillText('12',100,20);
+      ctx.fillText('9',20,100);
+      ctx.fillText('3',180,100);
+      ctx.fillText('6',100,180);
+    }
+    clock()
+  </script>
+</body>
+</html>
