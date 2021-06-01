@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖和节流</title>
+</head> 
+<body> 
+  <br>
+    防抖：通过setTimeout的方式，在一定时间间隔内将多次触发变成一次触发：如果一直触发一个按钮一百下都短于时间间隔1s，就只触发一次</br>
+    节流：减少一段时间内的触发频率，如果一直触发，在每一个时间间隔中只执行一次，十秒触发一个按钮一百次，时间间隔一秒，触发10次
+  </p>
+  <input type="text"></input>
+  <input id="input" type="submit"></input>
+  <script type='text/javascript'>  
+    var btn = document.getElementById('input')
+    btn.addEventListener('click',debounce_time(submit,1000),false)
+    function submit(e){
+      console.log(e, this)
+    }
+    // 防抖：立即执行
+    function debounce_imme(fn,wait){
+      var timerId = null;
+      return function(){
+        timerId && clearTimeout(timerId); 
+        !timerId && fn.apply(this,arguments); // 第一次立即执行
+        timerId = setTimeout(()=>{
+          timerId = null
+        },wait)
+      }
+    }
+    // 防抖：非立即执行
+    function debounce(fn,wait){
+      var timerId = null;
+      return function(){
+        clearTimeout(timerId);
+        timerId = setTimeout(()=>{
+          fn.apply(this,arguments);
+        },wait)
+      }
+    }
+    // 节流非立即执行
+    function throttle(fn, time){
+      let flag = true;
+      return function () {
+        if (!flag) return;
+        flag = false;
+        setTimeout(() => {
+            fn.apply(this, arguments);
+            flag = true;
+        }, time);
+      }
+    }
+    // 节流立即执行
+    function throttle_imme(fn, time){
+      let flag = true;
+      return function () {
+        if(flag){
+          fn.apply(this, arguments);
+          flag = false;
+          setTimeout(() => {
+            flag = true;
+          }, time);
+        }
+      }
+    }
+    // 时间戳
+    function throttle(fn, time){
+      let start = 0;
+      return function () {
+        let now = new Date()
+        if(now - start >= time){
+          fn.apply(this,arguments)
+          start = now
+        }
+      }
+    }
+    function debounce_time(fn,wait){
+      var start = 0;
+      return function(){
+        let now = new Date();
+        if(now - start >= wait){
+          fn.apply(this,arguments)
+        }
+        start = now
+      }
+    }
+  </script>
+</body>
+</html>
