@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>order</title>
+</head>
+<style>
+  /* * {
+    padding: 0;
+    margin: 0;
+  } */
+
+  .box {
+    display: -webkit-flex;
+    display: flex;
+    height: 100px;
+    width: 100%;
+    border: 1px solid black;
+  }
+
+  p {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    margin: 10px;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+  }
+
+  .first {
+    -webkit-order: -1;
+    order: -1;
+  }
+</style>
+
+<body>
+  <h3>order</h3>
+  integer：用整数值来定义排列顺序，数值小的排在前面。可以为负值。
+  <div class="box">
+    <p>1</p>
+    <p>2</p>
+    <p class="first">3</p>
+    <p>4</p>
+    <p>5</p>
+  </div>
+</body>
+
+</html>

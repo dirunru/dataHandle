@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>align-content</title>
+</head>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .box1 {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    align-content: flex-start;
+    -webkit-align-content: flex-start;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .box2 {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    align-content: flex-end;
+    -webkit-align-content: flex-end;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .box3 {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    align-content: center;
+    -webkit-align-content: center;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .box4 {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    align-content: space-between;
+    -webkit-align-content: space-between;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .box5 {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    align-content: space-around;
+    -webkit-align-content: space-around;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .box6 {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    align-content: stretch;
+    -webkit-align-content: stretch;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  div>p {
+    width: 50px;
+    height: 50px;
+    color: white;
+    background-color: blue;
+    margin: 10px;
+    line-height: 50px;
+    text-align: center;
+  }
+</style>
+
+<br>
+<br>
+<h3>align-content 属性</h3>
+align-content 属性用于修改 flex-wrap 属性的行为。类似于 align-items, 但它不是设置弹性子元素的对齐，而是设置各个行的对齐。</br>
+align-content 语法如下：</br>
+align-content: flex-start | flex-end | center | space-between | space-around | stretch</br>
+<h3>flex-start</h3>
+<p>各行向弹性盒容器的起始位置堆叠。</p>
+<div class="box1">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+</div>
+<h3>flex-end</h3>
+<p>各行向弹性盒容器的结束位置堆叠。</p>
+<div class="box2">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+</div>
+<h3>center</h3>
+<p>各行向弹性盒容器的中间位置堆叠</p>
+<div class="box3">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+</div>
+<h3>space-between</h3>
+<p>
+  各行在弹性盒容器中平均分布
+</p>
+<div class="box4">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+</div>
+<h3>space-around</h3>
+<p>
+  各行在弹性盒容器中平均分布，两端保留子元素与子元素之间间距大小的一半。
+</p>
+<div class="box5">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+</div>
+<h3>stretch</h3>
+<p>
+  默认。各行将会伸展以占用剩余的空间
+</p>
+<div class="box6">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+</div>
+</body>
+
+</html>

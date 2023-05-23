@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>flex-wrap</title>
+</head>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .box1 {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+
+  .box2 {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .box3 {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
+    -webkit-flex-wrap: wrap-reverse;
+    flex-wrap: wrap-reverse;
+  }
+
+  div>p {
+    width: 50px;
+    height: 50px;
+    color: white;
+    background-color: blue;
+    margin: 10px;
+    line-height: 50px;
+    text-align: center;
+  }
+</style>
+
+<br>
+<br>
+<h3>flex-wrap 属性</h3>
+属性用于指定弹性盒子的子元素换行方式。</br>
+flex-wrap 语法如下：</br>
+flex-wrap: nowrap|wrap|wrap-reverse|initial|inherit</br>
+<h3>nowrap</h3>
+<p> 默认， 弹性容器为单行。该情况下弹性子项可能会溢出容器。</p>
+<div class="box1">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+</div>
+<h3>wrap</h3>
+<p>弹性容器为多行。该情况下弹性子项溢出的部分会被放置到新行，子项内部会发生断行</p>
+<div class="box2">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+</div>
+<h3>wrap-reverse</h3>
+<p>反转 wrap 排列</p>
+<div class="box3">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <p>7</p>
+  <p>8</p>
+  <p>9</p>
+</div>
+
+</body>
+
+</html>
