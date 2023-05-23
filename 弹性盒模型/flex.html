@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>flex</title>
+  <style>
+    .flex-container {
+      display: -webkit-flex;
+      display: flex;
+      width: 400px;
+      height: 250px;
+      background-color: lightgrey;
+    }
+
+    .flex-item {
+      background-color: cornflowerblue;
+      margin: 10px;
+    }
+
+    .item1 {
+      -webkit-flex: 2;
+      flex: 2;
+    }
+
+    .item2 {
+      -webkit-flex: 1;
+      flex: 1;
+    }
+
+    .item3 {
+      -webkit-flex: 1;
+      flex: 1;
+    }
+  </style>
+</head>
+
+<br>
+<h3>flex 属性用于指定弹性子元素如何分配空间。</h3>
+语法: flex: auto | initial | none | inherit | [ flex-grow ] || [ flex-shrink ] || [ flex-basis ]</br>
+auto: 计算值为 1 1 auto</br>
+initial: 计算值为 0 1 auto</br>
+none：计算值为 0 0 auto</br>
+inherit：从父元素继承</br>
+[ flex-grow ]：定义弹性盒子元素的扩展比率。</br>
+[ flex-shrink ]：定义弹性盒子元素的收缩比率。</br>
+[ flex-basis ]：定义弹性盒子元素的默认基准值。</br>
+<div class="flex-container">
+  <div class="flex-item item1">flex = 2</div>
+  <div class="flex-item item2">flex = 1</div>
+  <div class="flex-item item3">flex = 1</div>
+</div>
+</body>
+
+</html>

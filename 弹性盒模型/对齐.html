@@ -19,7 +19,8 @@
     margin: 0;
   } */
 
-  .box {
+  .box,
+  .box1 {
     display: -webkit-flex;
     display: flex;
     height: 100px;
@@ -31,15 +32,21 @@
     width: 50px;
     height: 50px;
     background-color: blue;
-    margin: 10px;
     color: white;
     text-align: center;
     line-height: 50px;
   }
 
-  .first {
-    -webkit-order: -1;
-    order: -1;
+  .box>p {
+    margin: 10px;
+  }
+
+  .box>p:first-child {
+    margin-right: auto;
+  }
+
+  .box1>p {
+    margin: auto;
   }
 </style>
 
@@ -49,9 +56,14 @@
   <div class="box">
     <p>1</p>
     <p>2</p>
-    <p class="first">3</p>
+    <p>3</p>
     <p>4</p>
     <p>5</p>
+  </div>
+  <h3>完美的居中</h3>
+  使用弹性盒子，居中变的很简单，只需要设置 margin: auto; 可以使得弹性子元素在两上轴方向上完全居中:
+  <div class="box1">
+    <p>1</p>
   </div>
 </body>
 
