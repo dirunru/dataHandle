@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>例子1</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    main {
+      border: solid 1px #ddd;
+      background: #ddd;
+      background-clip: content-box;
+      margin-bottom: 5px;
+      flex: 1;
+    }
+
+    footer {
+      flex: 0;
+      display: flex;
+      justify-content: space-evenly;
+      border-top: solid 1px #ddd;
+      min-height: 50px;
+    }
+
+    footer div {
+      flex: 1;
+      text-align: center;
+      line-height: 3em;
+      background: linear-gradient(to bottom, #f3f3f3, #eee, #f3f3f3);
+      cursor: pointer;
+    }
+
+    footer div:nth-child(n+2) {
+      border-left: solid 1px #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <main></main>
+  <footer>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </footer>
+</body>
+
+</html>
