@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /*定义外层，perspective是透视角*/
+      .world {
+        perspective: 800px;
+        width: 200px;
+        height: 200px;
+        margin: 200px;
+      }
+
+      /*设置视图为3d，使用旋转动画*/
+      #cube {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        animation: rotator 5s linear infinite;
+      }
+
+      /*设置每一片的基础样式*/
+      #cube * {
+        box-shadow: 0 0 3px currentColor;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+      }
+
+      /*设置一定的翻转角度使6片形成正方体*/
+      #cube__front {
+        color: deeppink;
+        transform: translateZ(100px);
+      }
+
+      #cube__back {
+        color: seagreen;
+        transform: rotateY(180deg) translateZ(100px);
+      }
+
+      #cube__right {
+        color: lightcoral;
+        transform: rotateY(90deg) translateZ(100px);
+      }
+
+      #cube__left {
+        color: skyblue;
+        transform: rotateY(-90deg) translateZ(100px);
+      }
+
+      #cube__top {
+        color: mediumseagreen;
+        transform: rotateX(90deg) translateZ(100px);
+      }
+
+      #cube__bottom {
+        color: dodgerblue;
+        transform: rotateX(-90deg) translateZ(100px);
+      }
+
+      /*简单的动画*/
+      @keyframes rotator {
+        from {
+          transform: rotateX(0deg) rotateY(0deg);
+        }
+        to {
+          transform: rotateX(360deg) rotateY(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="world">
+      <div id="cube" tabindex="0">
+        <div id="cube__front">1</div>
+        <div id="cube__back">2</div>
+        <div id="cube__left">3</div>
+        <div id="cube__right">4</div>
+        <div id="cube__top">5</div>
+        <div id="cube__bottom">6</div>
+      </div>
+    </div>
+    <script type="text/javaScript">
+      // let reg =/^[_]+$/
+      // let str = 'abc_def_g_hi_jk'
+      // let newStr = str.replace(reg, ($1,$2,$3)=>{
+      //   console.log('reg', reg)
+      // })
+      // console.log('newStr', newStr)
+      const str = 'new_str_dev_box'
+      const reg = /([^_])(?:_+([^_]))/g;
+      console.log(str.replace(reg, ($0, $1, $2) => {
+          console.log('$0', $0,'$1', $1,'$2', $2)
+          return $1 + $2.toUpperCase()
+      }));
+    </script>
+  </body>
+</html>
