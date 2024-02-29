@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>属性选择器</title>
+  <style>
+    /* div[class$='_btn'] {
+      color: red;
+    } */
+    /* div[class^='test'] {
+      color: red;
+    } */
+
+    /* div {
+      color: yellow;
+    } */
+    div[title][class] {
+      color: red;
+    }
+
+    div[class$='test'] .p2+.p3 {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <body>
+    <div
+      class="test"
+      title="title"
+    >1</div>
+    <div class="test_btn">3</div>
+    <div class="test">4</div>
+    <div class="best best_btn">5</div>
+    <div class="test">2</div>
+    <div class="test_btn best">6</div>
+    <div class="best_btn test">7
+      <p class="p1">71</p>
+      <p class="p2">72</p>
+      <p class="p3">73</p>
+      <p class="p4">74</p>
+    </div>
+  </body>
+  <script type="text/javascript">
+    function _new (context, ...args) {
+      if (typeof context != 'function') {
+        throw 'context must be a function'
+      }
+      //实例对象
+      let obj = new Object()
+      //实例对象的 __proto__属性 指向构造函数的原型对象
+      obj.__proto__ = Object.create(context.prototype)
+      //apply将实例对象作为第一对象，实例对象作为函数上下文对象，
+      //可以直接访问原生对象的属性，通过实例对象就可以访问到，因为this指向实例对象
+      //保存返回值
+      let res = context.apply(obj, [...args])
+      //判断是否是引用对象
+      let isObject = typeof res === 'object' && typeof res !== null
+      let isFunction = typeof res === 'function'
+      //判断返回值，如果是一个对象Object 那就返回该对象作为整个表达式；如果是非对象，就忽略返回值，直接返回新创建的对象
+      return isObject || isFunction ? res : obj
+    }
+    console.log('_new(Array, [1, 2, 3])', _new(Array, 1, 2, 3))
+
+  </script>
+</body>
+
+</html>

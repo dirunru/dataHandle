@@ -3,8 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="ie=edge"
+    >
     <title>手撕js</title>
     <style>
         /* 选择li元素是其父元素的第二个元素 */
@@ -62,7 +68,7 @@
         </ul>
     </div>
     <script type="text/javascript">
-        function fun01() {
+        function fun01 () {
             const arr = [1, [2, [3, [4, 5]]], 6];
             console.log('01.数组扁平化处理');
             console.log('方法一、flat：flat存在兼容性问题', arr.flat(Infinity));
@@ -88,7 +94,7 @@
             console.log('方法四、函数递归：递归方法处理', res5);
         }
 
-        function fun02() {
+        function fun02 () {
             console.log('02.数组去重');
             const arr = [1, 1, '1', 17, true, true, false, false, 'true', 'a', {}, {}];
             console.log('方法一、set方法：', Array.from(new Set(arr)))
@@ -151,7 +157,7 @@
             console.log('方法六：利用Map:', unique5(arr))
         }
 
-        function fun03() {
+        function fun03 () {
             let divArray = document.querySelectorAll('div')
             console.log('divArray', divArray)
             console.log('方法一、Array.from', Array.from(divArray))
@@ -215,8 +221,8 @@
                 if (Object.prototype.hasOwnProperty.call(target, i)) {
                     cloneTarget[i] =
                         typeof target[i] === 'object' && target[i] !== null ?
-                        cloneDeep1(target[i], hash) :
-                        target[i];
+                            cloneDeep1(target[i], hash) :
+                            target[i];
                 }
             }
             return cloneTarget;

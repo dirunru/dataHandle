@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>伪类选择器</title>
+</head>
+<style>
+  div {
+    display: none;
+  }
+
+  #nav,
+  #nav_item {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    color: #fff;
+  }
+
+  :target {
+    display: block;
+  }
+</style>
+<!--html-->
+
+<body>
+  <nav>
+    <a href="#nav">学习链接</a>
+    <a href="#nav_item">干饭链接</a>
+  </nav>
+  <div id="nav">
+    今天也要好好学习啊
+  </div>
+  <div id="nav_item">
+    也要好好干饭哦
+  </div>
+</body>
+
+</html>
